@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('sanciones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuario_id')->constrained('users');
+            $table->string('motivo');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->boolean('activa')->default(true);
             $table->timestamps();
         });
     }
