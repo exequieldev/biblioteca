@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreLibroRequest extends FormRequest
+class StorePrestamoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,10 @@ class StoreLibroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo' => 'required|string',
-            'autor' => 'required|string'
+            'usuario_id' => 'required|exists:users,id',
+            'libro_id' => 'required|exists:libros,id',
+            'fecha_prestamo' => 'required|date',
+            'fecha_devolucion' => 'required|date|after_or_equal:fecha_prestamo'
         ];
     }
 }

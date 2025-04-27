@@ -2,6 +2,9 @@
  
 namespace App\Services;
 
+use App\Models\Libro;
+use App\Models\Prestamo;
+
 class PrestamoService {
     public function crearPrestamo(array $data) {
         $libro = Libro::findOrFail($data['libro_id']);
